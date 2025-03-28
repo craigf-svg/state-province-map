@@ -1,0 +1,7 @@
+{
+    "name": "statesorter/api",
+    "description": "API for State Info",
+    "require": {
+      "vlucas/phpdotenv": "^5.0"
+    }
+  }

@@ -1,7 +1,11 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+.env
+.vscode
+backend/vendor
+backend/vendor/autoload.php
 
 # dependencies
-/node_modules
+/frontend/node_modules/
 /.pnp
 .pnp.js
 

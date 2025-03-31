@@ -9,7 +9,7 @@ export default function ToggleCountryButton(props) {
             <SvgIcon>
                <svg
                   version="1.1"
-                  enable-background="new 0 0 65 65"
+                  enableBackground="new 0 0 65 65"
                   y="0px"
                   x="0px"
                   viewBox="0 0 65 65"

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import StateTable from './components/Table/StateTable'
+import RegionStatsTable from './components/Table/RegionStatsTable';
 import MapView from './components/Map/MapView';
 
 const centerStyle = { display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' };
@@ -28,7 +28,7 @@ function App() {
     <div style={centerStyle}>
       <MapView densityOrLandmass={densityOrLandmass} country={country} setDensityOrLandmass={setDensityOrLandmass} setCountry={setCountry} centerStyle={centerStyle} />
       <h1>{title} Data</h1>
-      <StateTable data={data} />
+      <RegionStatsTable data={data} />
     </div>
   );
 }

@@ -7,7 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-export default function StateTable(props) {
+export default function RegionStatsTable(props) {
     const { data } = props;
     return (
         <div style={{ minWidth: 650, maxWidth: '50%', maxHeight: '50%' }}>
@@ -21,16 +21,16 @@ export default function StateTable(props) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {data.map((state) => (
+                        {data.map((region) => (
                             <TableRow
-                                key={state.name}
+                                key={region.name}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
                                 <TableCell component="th" scope="row">
-                                    {state.name}
+                                    {region.name}
                                 </TableCell>
-                                <TableCell align="left">{state.abbreviation}</TableCell>
-                                <TableCell align="left">{state.land_mass}</TableCell>
+                                <TableCell align="left">{region.abbreviation}</TableCell>
+                                <TableCell align="left">{(region.land_mass && !isNaN(region.land_mass)) ? `${Number(region.land_mass).toLocaleString()} mi²` : "N/A"} </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

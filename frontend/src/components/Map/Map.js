@@ -4,6 +4,7 @@ import { GeoJSON } from 'react-leaflet/GeoJSON'
 import "leaflet/dist/leaflet.css";
 import stateGeoJsonData from '../Data/stateGeoJsonData.js'
 import { landmassStyle, densityStyle, highlightFeature } from './MapStyles.js'
+import LegendControl from './LegendControl.js'
 
 const Map = (props) => {
     const { densityOrLandmass } = props;
@@ -26,6 +27,7 @@ const Map = (props) => {
         <TileLayer url='https://tile.openstreetmap.org/{z}/{x}/{y}.png' />
         {densityOrLandmass === 'landmass' && <GeoJSON data={stateGeoJsonData} style={landmassStyle} ref={landmassRef} onEachFeature={onEachFeature} />}
         {densityOrLandmass === 'density' && <GeoJSON data={stateGeoJsonData} style={densityStyle} ref={densityRef} onEachFeature={onEachFeature} />}
+        <LegendControl densityOrLandmass={densityOrLandmass} />
     </MapContainer>
     )
 };

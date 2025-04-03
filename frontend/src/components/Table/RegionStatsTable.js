@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 export default function RegionStatsTable(props) {
     const { data } = props;
     return (
-        <div style={{ minWidth: 650, maxWidth: '50%', maxHeight: '50%' }}>
+        <div style={{ minWidth: 650, maxWidth: '50%', maxHeight: '50%', marginBottom: '20px' }}>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650, maxHeight: '50%' }}>
                     <TableHead>
@@ -21,18 +21,25 @@ export default function RegionStatsTable(props) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {data.map((region) => (
-                            <TableRow
-                                key={region.name}
-                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                            >
-                                <TableCell component="th" scope="row">
-                                    {region.name}
+                        {(!data || data.length === 0) ? (
+                            <TableRow>
+                                <TableCell colSpan={3} align="center">
+                                    No data to display
                                 </TableCell>
-                                <TableCell align="left">{region.abbreviation}</TableCell>
-                                <TableCell align="left">{(region.land_mass && !isNaN(region.land_mass)) ? `${Number(region.land_mass).toLocaleString()} mi²` : "N/A"} </TableCell>
                             </TableRow>
-                        ))}
+                        ) : (
+                            data.map((region) => (
+                                <TableRow
+                                    key={region.name}
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                >
+                                    <TableCell component="th" scope="row">
+                                        {region.name}
+                                    </TableCell>
+                                    <TableCell align="left">{region.abbreviation}</TableCell>
+                                    <TableCell align="left">{(region.land_mass && !isNaN(region.land_mass)) ? `${Number(region.land_mass).toLocaleString()} mi²` : "N/A"} </TableCell>
+                                </TableRow>
+                            )))}
                     </TableBody>
                 </Table>
             </TableContainer>

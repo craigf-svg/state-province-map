@@ -4,11 +4,11 @@ import ToggleMapType from '../ToggleMapType';
 import ToggleCountryGroup from '../ToggleCountryGroup';
 
 export default function MapView(props) {
-    const { densityOrLandmass, setDensityOrLandmass, country, setCountry, centerStyle } = props;
+    const { densityOrLandmass, setDensityOrLandmass, country, setCountry } = props;
 
     return (
-        <div style={{ ...centerStyle, height: '90vh', width: '80vw' }}>
-            <div style={centerStyle}>
+        <div class="container" style={{ height: '90vh', width: '80vw' }}>
+            <div class="container">
                 <h1>State {densityOrLandmass === "landmass" ? "Landmass" : "Density"} Map</h1>
                 <div style={{ display: 'flex', marginBottom: 10 }}>
                     <ToggleCountryGroup country={country} setCountry={setCountry} />

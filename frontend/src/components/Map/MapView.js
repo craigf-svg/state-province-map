@@ -2,21 +2,20 @@
 import Map from './Map';
 import ToggleMapType from '../ToggleMapType';
 import ToggleCountryGroup from '../ToggleCountryGroup';
+import './MapStyles.css';
 
-export default function MapView(props) {
-    const { densityOrLandmass, setDensityOrLandmass, country, setCountry } = props;
+export default function MapView({ densityOrLandmass, setDensityOrLandmass, country, setCountry }) {
 
     return (
-        <div class="container" style={{ height: '90vh', width: '80vw' }}>
-            <div class="container">
-                <h1>State {densityOrLandmass === "landmass" ? "Landmass" : "Density"} Map</h1>
-                <div style={{ display: 'flex', marginBottom: 10 }}>
+        <div className="container mapview">
+            <div className="container">
+                <h1 style={{textAlign: 'center'}}>State {densityOrLandmass === "landmass" ? "Landmass" : "Density"} Map</h1>
+                <div style={{ display: 'flex', marginBottom: 10, gap: '10px' }}>
                     <ToggleCountryGroup country={country} setCountry={setCountry} />
-                    <div style={{ margin: '5px' }}> </div>
                     <ToggleMapType densityOrLandmass={densityOrLandmass} setDensityOrLandmass={setDensityOrLandmass} variant="contained" style={{ margin: 20 }} />
                 </div>
             </div>
-            <div style={{ width: "100%", height: '80%', maxWidth: '1200px', minWidth: '300px' }}>
+            <div className="map-container">
                 <Map densityOrLandmass={densityOrLandmass} />
             </div>
         </div>

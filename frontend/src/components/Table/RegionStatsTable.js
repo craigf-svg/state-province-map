@@ -10,9 +10,9 @@ import Paper from '@mui/material/Paper';
 export default function RegionStatsTable(props) {
     const { data } = props;
     return (
-        <div style={{ minWidth: 650, maxWidth: '50%', maxHeight: '50%', marginBottom: '20px' }}>
+        <div style={{ maxWidth: '50%', maxHeight: '50%', marginBottom: '20px' }}>
             <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650, maxHeight: '50%' }}>
+                <Table sx={{ maxHeight: '50%' }}>
                     <TableHead>
                         <TableRow>
                             <TableCell>Name</TableCell>

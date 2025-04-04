@@ -1,9 +1,13 @@
-# State and Province Landmass Table
+# 🗺️ State and Province Landmass Map and Table
 
-This project displays a table of U.S. states with their corresponding landmasses in squared miles (mi²). Users can toggle between U.S. states and Canadian provinces, with data being sorted in descending order by landmass.
+This project displays a **choropleth map** and **table** of U.S. states and Canadian provinces with their corresponding landmasses in squared miles (mi²) and population density (people/mi²). Users can toggle between U.S. states and Canadian provinces and between landmass and population density.
+
+### ⚠️ Note
+- 📌 **Population density data** is **not yet included** on the table.  
+- 📌 **Canadian provinces** are **not yet included** on the map.  
 
 <p align=center>
-<img src="https://github.com/user-attachments/assets/1c86d4ba-c66b-486d-8517-62d5627425b2" alt="Project Screenshot" width="700">
+<img src="https://github.com/user-attachments/assets/b4937762-c22d-4ee6-8b71-2898d71e65db" alt="Project Screenshot" width="700"
 </p>
 
 

@@ -3,7 +3,7 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import { GeoJSON } from 'react-leaflet/GeoJSON'
 import "leaflet/dist/leaflet.css";
 import stateGeoJsonData from '../Data/stateGeoJsonData.js'
-import { landmassStyle, densityStyle, highlightFeature } from './MapStyles.js'
+import { landmassStyle, densityStyle, highlightFeature } from './MapStyleUtils.js'
 import LegendControl from './LegendControl.js'
 
 const Map = (props) => {

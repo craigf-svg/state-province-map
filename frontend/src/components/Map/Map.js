@@ -23,7 +23,7 @@ const Map = (props) => {
         if (landmassRef.current) landmassRef.current.resetStyle(e.target);
     }
 
-    return (<MapContainer center={[37.8, -96]} zoom={4} minZoom={3} style={{ height: "700px", width: "100%" }} geoJsonData={stateGeoJsonData}>
+    return (<MapContainer center={[37.8, -96]} zoom={4} minZoom={3} style={{ height: "100%", width: "100%" }} geoJsonData={stateGeoJsonData}>
         <TileLayer url='https://tile.openstreetmap.org/{z}/{x}/{y}.png' />
         {densityOrLandmass === 'landmass' && <GeoJSON data={stateGeoJsonData} style={landmassStyle} ref={landmassRef} onEachFeature={onEachFeature} />}
         {densityOrLandmass === 'density' && <GeoJSON data={stateGeoJsonData} style={densityStyle} ref={densityRef} onEachFeature={onEachFeature} />}

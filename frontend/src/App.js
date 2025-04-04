@@ -23,9 +23,9 @@ function App() {
   }, [country]);
 
   return (
-    <div class="container">
+    <div className="container">
       <MapView densityOrLandmass={densityOrLandmass} country={country} setDensityOrLandmass={setDensityOrLandmass} setCountry={setCountry} />
-      <h1>{title} Data</h1>
+      <h1 className="align-center">{title} Data</h1>
       <RegionStatsTable data={data} />
     </div>
   );

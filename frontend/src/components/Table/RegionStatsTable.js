@@ -18,12 +18,13 @@ export default function RegionStatsTable(props) {
                             <TableCell>Name</TableCell>
                             <TableCell align="left">Abbreviation</TableCell>
                             <TableCell align="left">Landmass&nbsp;(mi²)</TableCell>
+                            <TableCell align="left">Density&nbsp;(population/mi²)</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {(!data || data.length === 0) ? (
                             <TableRow>
-                                <TableCell colSpan={3} align="center">
+                                <TableCell colSpan={4} align="center">
                                     No data to display
                                 </TableCell>
                             </TableRow>
@@ -38,6 +39,7 @@ export default function RegionStatsTable(props) {
                                     </TableCell>
                                     <TableCell align="left">{region.abbreviation}</TableCell>
                                     <TableCell align="left">{(region.land_mass && !isNaN(region.land_mass)) ? `${Number(region.land_mass).toLocaleString()} mi²` : "N/A"} </TableCell>
+                                    <TableCell align="left">{(region.density && !isNaN(region.density)) ? `${Number(region.density).toLocaleString()}` : "N/A"} </TableCell>
                                 </TableRow>
                             )))}
                     </TableBody>

@@ -14,6 +14,7 @@ Make sure your `states` and `provinces` MySQL tables have columns as
 - `name VARCHAR(45) NN`
 - `abbreviation VARCHAR(2) NN`
 - `land_mass DECIMAL(10,2) NN`
+- `density DECIMAL(10,2) NN`
 
 ## API Documentation
 - **GET /api/states** - Fetch U.S. states with landmasses.

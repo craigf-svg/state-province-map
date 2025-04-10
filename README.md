@@ -3,7 +3,6 @@
 This project displays a **choropleth map** and **table** of U.S. states and Canadian provinces with their corresponding landmasses in squared miles (mi²) and population density (people/mi²). Users can toggle between U.S. states and Canadian provinces and between landmass and population density.
 
 ### ⚠️ Note
-- 📌 **Population density data** is **not yet included** on the table.  
 - 📌 **Canadian provinces** are **not yet included** on the map.  
 
 <p align=center>

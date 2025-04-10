@@ -20,10 +20,10 @@
     text-align: center;
 }
 
-/* Mobile responsiveness */
-@media screen and (max-width: 530px) {
+/* Adjusts styles for screens smaller than 650px */
+@media screen and (max-width: 650px) {
     .mapview {
-        min-height: auto;
+        min-height: 384px;
         min-width: 200px;
     }
 

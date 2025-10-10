@@ -1,57 +1,42 @@
 # 🗺️ State and Province Landmass Map and Table
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
 
-This project displays a **choropleth map** and **table** of U.S. states and Canadian provinces with their corresponding landmasses in squared miles (mi²) and population density (people/mi²). Users can toggle between U.S. states and Canadian provinces and between landmass and population density.
+Interactive dashboard showing U.S. states and Canadian provinces by landmass and population density built with React and Next.js.
 
-### ⚠️ Note
-- 📌 **Canadian provinces** are **not yet included** on the map.  
+Displays choropleth map and table of U.S. states and Canadian provinces with corresponding landmasses in squared miles (mi²) and population density (people/mi²).
 
 <p align=center>
-<img src="https://github.com/user-attachments/assets/b4937762-c22d-4ee6-8b71-2898d71e65db" alt="Project Screenshot" width="700"
+   <img src="https://github.com/user-attachments/assets/b4937762-c22d-4ee6-8b71-2898d71e65db" alt="Project Screenshot" width="700"
 </p>
 
-
-## Technologies Used
-
-- **Frontend**: React.js, HTML, CSS
-- **Backend**: PHP, MySQL
-- **Database**: MySQL
-
-## Usage
-Once both frontend and backend are set up and running, visit http://localhost:3000 to interact with the table.
-
-The table will initially show U.S. states sorted by landmass. Clicking the toggle button will switch to displaying Canadian provinces.
-
-## API Documentation
-- **GET /api/states** - Fetch U.S. states with landmasses.
-
-- **GET /api/provinces** - Fetch Canadian provinces with landmasses.
-
-Both endpoints return the data sorted in descending order by landmass.
-
-### Frontend Setup
-
-1. Navigate to the `frontend` directory - 
+### Next Server
+Navigate to the `frontend` directory
    ```
-   cd frontend
-   npm start
+   cd next
+   npm run dev
    ```
 
 ### Backend Setup
 
-1. Navigate to the `backend` directory - 
-   ```
-   cd backend
-   ```
+1. Create .env file in the backend/db folder and enter the credentials to access your MySQL database.
 
-2. Create a .env file in the db folder and enter the credentials to access your MySQL database. Check backend README for more info on the database.
-
-3. Install PHP dependencies using Composer 
-
+2. Install PHP dependencies 
     ```
     composer install
     ```
 
-3. Run your server from backend folder
+3. Run server
     ```
     php -S localhost:8000
     ```
+    
+### API
+`GET /api/states` - Fetch U.S. states with landmasses.
+
+`GET /api/provinces` - Fetch Canadian provinces with landmasses.
+
+Both endpoints return the data sorted in descending order by landmass.
+
+### Note
+Canadian provinces are not yet included on the map.

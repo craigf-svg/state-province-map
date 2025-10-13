@@ -26,3 +26,4 @@ backend/vendor/autoload.php
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+go/vendor/

@@ -1,8 +1,15 @@
+import { NextResponse } from 'next/server';
+
 export async function GET() {
   try {
-    const states = [/* your data */]
-    return Response.json(states)
+    const res = await fetch('http://localhost:8000/api/getStates');
+    if (!res.ok) {
+      throw new Error(`Upstream responded with ${res.status}`);
+    }
+    const data = await res.json();
+    return NextResponse.json(data);
   } catch (error) {
-    return Response.json({ error: 'Server error' }, { status: 500 })
+    console.error(error);
+    return NextResponse.json({ error: 'server error' }, { status: 500 });
   }
 }

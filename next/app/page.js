@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import DarkModeToggle from "@/components/DarkModeToggle"
+import Typography from '@mui/material/Typography';
 
 const MapView = dynamic(() => import("@/components/Map/MapView"), {
   ssr: false,
@@ -43,7 +44,7 @@ export default function Home() {
         setDensityOrLandmass={setDensityOrLandmass}
         setCountry={setCountry}
       />
-      <h1 className="align-center">{title} Data</h1>
+      <Typography variant="h3" style={{ paddingBottom: 10 }}>{title} Data</Typography>
       <RegionStatsTable data={data} />
     </div>
   );

@@ -18,26 +18,7 @@ export default function ToggleMapType(props) {
       aria-label="text alignment"
     >
       <Tooltip title="Landmass" placement='bottom' arrow>
-        <ToggleButton value="landmass" aria-label="centered"
-          //OG Color is 
-          sx={{
-            color: 'unset',
-            backgroundColor: 'unset'
-          }}
-        /*
-        sx={{
-          color: 'white',
-          bgcolor: 'white',           // green background
-          '&.Mui-selected': {
-            bgcolor: 'white',         // darker green when selected
-            color: 'white',
-            '&:hover': {
-              bgcolor: 'white',
-            },
-          },
-        }}
-      //*/
-        >
+        <ToggleButton value="landmass" aria-label="centered">
           <LandscapeIcon />
         </ToggleButton>
       </Tooltip>

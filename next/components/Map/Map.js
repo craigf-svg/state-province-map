@@ -5,7 +5,7 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import { GeoJSON } from 'react-leaflet/GeoJSON'
 import "leaflet/dist/leaflet.css";
 import LegendControl from "@/components/Map/LegendControl";
-import stateGeoJsonData from "../../../frontend/src/components/Data/stateGeoJsonData"
+import stateGeoJsonData from "@/components/Data/stateGeoJsonData"
 import { landmassStyle, densityStyle, highlightFeature } from './MapStyleUtils.js'
 
 export default function Map({ densityOrLandmass }) {

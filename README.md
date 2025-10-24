@@ -6,9 +6,9 @@
 Interactive dashboard showing U.S. states and Canadian provinces by landmass and population density built with React and Next.js.
 
 Displays choropleth map and table of U.S. states and Canadian provinces with corresponding landmasses in squared miles (mi²) and population density (people/mi²).
-
+   
 <p align=center>
-   <img src="https://github.com/user-attachments/assets/b4937762-c22d-4ee6-8b71-2898d71e65db" alt="Project Screenshot" width="700"
+   <img width="1839" height="977" alt="Dashboard Screenshot" src="https://github.com/user-attachments/assets/0b20a7ed-ec9d-4244-8fda-d32f3182030a" />
 </p>
 
 ## Start Next.js

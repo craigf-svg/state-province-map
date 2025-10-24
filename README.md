@@ -1,5 +1,5 @@
 # 🗺️ State and Province Landmass Map and Table
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![React](https://img.shields.io/badge/React-0F0F0F?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Next.js](https://img.shields.io/badge/Next.js-0F0F0F?style=for-the-badge&logo=nextdotjs&logoColor=white)
 ![Go](https://img.shields.io/badge/Go-0F0F0F?style=for-the-badge&logo=go&logoColor=00ADD8)
 

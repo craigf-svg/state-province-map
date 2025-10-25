@@ -9,7 +9,7 @@ const RegionStatsTable = dynamic(
   }
 );
 
-export default function ({ title, data }) {
+export default function TableView({ title, data }) {
   return (
     <div className="tableview">
       <Typography

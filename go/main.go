@@ -40,13 +40,13 @@ func main() {
 	}
 
 	http.HandleFunc("/api/getStates", withCORS(func(w http.ResponseWriter, r *http.Request) {
-		query := `SELECT id, name, ROUND(density) AS density, ROUND(land_mass) AS land_mass 
+		query := `SELECT id, name, abbreviation, ROUND(density) AS density, ROUND(land_mass) AS land_mass 
               FROM states ORDER BY land_mass DESC`
 		serveQueryJSONSqlx(w, r, query)
 	}))
 
 	http.HandleFunc("/api/getProvinces", withCORS(func(w http.ResponseWriter, r *http.Request) {
-		query := `SELECT id, name, ROUND(density) AS density, ROUND(land_mass) AS land_mass FROM provinces ORDER BY land_mass DESC`
+		query := `SELECT id, name, abbreviation, ROUND(density) AS density, ROUND(land_mass) AS land_mass FROM provinces ORDER BY land_mass DESC`
 		serveQueryJSONSqlx(w, r, query)
 	}))
 
@@ -74,10 +74,11 @@ func withCORS(h http.HandlerFunc) http.HandlerFunc {
 }
 
 type State struct {
-	ID       int     `db:"id" json:"id"`
-	Name     string  `db:"name" json:"name"`
-	Density  float64 `db:"density" json:"density"`
-	LandMass float64 `db:"land_mass" json:"land_mass"`
+	ID           int     `db:"id" json:"id"`
+	Name         string  `db:"name" json:"name"`
+	Abbreviation string  `db:"abbreviation" json:"abbreviation"`
+	Density      float64 `db:"density" json:"density"`
+	LandMass     float64 `db:"land_mass" json:"land_mass"`
 }
 
 func serveQueryJSONSqlx(w http.ResponseWriter, r *http.Request, query string) {

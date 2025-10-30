@@ -7,10 +7,13 @@ import "leaflet/dist/leaflet.css";
 import LegendControl from "@/components/Map/LegendControl";
 import stateGeoJsonData from "@/components/Data/stateGeoJsonData"
 import { landmassStyle, densityStyle, highlightFeature } from './MapStyleUtils.js'
+import provinceGeoJsonData from "../Data/canada.js";
 
 export default function Map({ densityOrLandmass }) {
   const densityRef = useRef();
   const landmassRef = useRef();
+  const canadaDensityRef = useRef();
+  const canadaLandmassRef = useRef();
 
   function onEachFeature(feature, layer) {
     layer.on({
@@ -29,6 +32,8 @@ export default function Map({ densityOrLandmass }) {
       <TileLayer url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
       {densityOrLandmass === 'landmass' && <GeoJSON data={stateGeoJsonData} style={landmassStyle} ref={landmassRef} onEachFeature={onEachFeature} />}
       {densityOrLandmass === 'density' && <GeoJSON data={stateGeoJsonData} style={densityStyle} ref={densityRef} onEachFeature={onEachFeature} />}
+      {densityOrLandmass === 'landmass' && <GeoJSON data={provinceGeoJsonData} style={landmassStyle} ref={canadaLandmassRef} onEachFeature={onEachFeature} /> }
+      {densityOrLandmass === 'density' && <GeoJSON data={provinceGeoJsonData} style={densityStyle} ref={canadaDensityRef} onEachFeature={onEachFeature} /> }
       <LegendControl densityOrLandmass={densityOrLandmass} />
     </MapContainer>
   );

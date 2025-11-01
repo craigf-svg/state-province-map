@@ -13,7 +13,7 @@ export default function LegendControl({ densityOrLandmass }) {
       <div
         className="legend-item"
         style={{ background: getGradeColor(x), color: getLegendTextColor(getGradeColor(x)) }}
-        key={index}
+        key={x}
       >
         {x.toLocaleString()}{grades[index + 1] ? `–${grades[index + 1].toLocaleString()}` : '+'} {densityOrLandmass === 'landmass' ? 'mi²' : 'people/mi²'}
       </div>

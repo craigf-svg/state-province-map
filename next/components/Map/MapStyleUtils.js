@@ -1,23 +1,23 @@
 function getLandmassColor(d) {
-  return d >= 150000 ? '#800026' :
-    d >= 100000 ? '#BD0026' :
-    d >= 50000 ? '#E31A1C' :
-    d >= 25000 ? '#FC4E2A' :
-    d >= 12000 ? '#FD8D3C' :
-    d >= 6500 ? '#FEB24C' :
-    d >= 3000 ? '#FED976' :
-      '#FFEDA0';
+  if (d >= 150000) return '#800026';
+  if (d >= 100000) return '#BD0026';
+  if (d >= 50000) return '#E31A1C';
+  if (d >= 25000) return '#FC4E2A';
+  if (d >= 12000) return '#FD8D3C';
+  if (d >= 6500) return '#FEB24C';
+  if (d >= 3000) return '#FED976';
+  return '#FFEDA0';
 }
 
 function getDensityColor(d) {
-  return d >= 1000 ? '#800026' :
-    d >= 500 ? '#BD0026' :
-    d >= 200 ? '#E31A1C' :
-    d >= 100 ? '#FC4E2A' :
-    d >= 50 ? '#FD8D3C' :
-    d >= 20 ? '#FEB24C' :
-    d >= 10 ? '#FED976' :
-      '#FFEDA0';
+  if (d >= 1000) return '#800026';
+  if (d >= 500) return '#BD0026';
+  if (d >= 200) return '#E31A1C';
+  if (d >= 100) return '#FC4E2A';
+  if (d >= 50) return '#FD8D3C';
+  if (d >= 20) return '#FEB24C';
+  if (d >= 10) return '#FED976';
+  return '#FFEDA0';
 }
 
 const landmassStyle = (feature) => ({
@@ -39,7 +39,7 @@ const densityStyle = (feature) => ({
 });
 
 const highlightFeature = (e) => {
-  var layer = e.target;
+  const layer = e.target;
   layer.setStyle({
     weight: 5,
     color: '#f59e0b',

@@ -1,11 +1,17 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --text: #111827;
+  --text-secondary: #4b5563;
+  --background-secondary: #f8fafc;
 }
 
 .dark {
   --background: #121212;
   --foreground: #ededed;
+  --text: #e5e7eb;
+  --text-secondary: #94a3b8;
+  --background-secondary: #0b1220;
 }
 
 html,

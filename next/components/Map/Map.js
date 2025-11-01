@@ -25,6 +25,8 @@ export default function Map({ densityOrLandmass }) {
   function resetHighlight(e) {
     if (densityRef.current) densityRef.current.resetStyle(e.target);
     if (landmassRef.current) landmassRef.current.resetStyle(e.target);
+    if (canadaDensityRef.current) canadaDensityRef.current.resetStyle(e.target);
+    if (canadaLandmassRef.current) canadaLandmassRef.current.resetStyle(e.target);
   }
 
   return (

@@ -4,7 +4,7 @@ This backend provides an API for managing states and provinces information using
 
 Install your dependencies using `composer install`
 
-If running locally, run your PHP server from this folder using `php -S localhost:8000`
+If running locally, run your PHP server from this folder with `php -S localhost:8000 -t . router.php`
 
 ## Database Format
 

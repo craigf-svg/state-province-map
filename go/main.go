@@ -14,6 +14,8 @@ import (
 
 var db *sqlx.DB
 
+const headerContentType = "Content-Type"
+
 func main() {
 	err1 := godotenv.Load()
 	if err1 != nil {
@@ -51,7 +53,7 @@ func main() {
 	}))
 
 	http.HandleFunc("/healthz", withCORS(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set(headerContentType, "application/json")
 		_ = json.NewEncoder(w).Encode(map[string]string{"status": "ok"})
 	}))
 
@@ -64,7 +66,7 @@ func withCORS(h http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Access-Control-Allow-Origin", "*")
 		w.Header().Set("Access-Control-Allow-Methods", "GET, OPTIONS")
-		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+		w.Header().Set("Access-Control-Allow-Headers", headerContentType)
 		if r.Method == http.MethodOptions {
 			w.WriteHeader(http.StatusNoContent)
 			return
@@ -95,7 +97,7 @@ func serveQueryJSONSqlx(w http.ResponseWriter, r *http.Request, query string) {
 		return
 	}
 
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set(headerContentType, "application/json")
 	if err := json.NewEncoder(w).Encode(results); err != nil {
 		log.Printf("JSON encode error: %v", err)
 	}

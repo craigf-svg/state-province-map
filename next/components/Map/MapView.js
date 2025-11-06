@@ -1,6 +1,7 @@
+import PropTypes from "prop-types";
 import ToggleMapType from "@/components/ToggleMapType";
 import ToggleCountryGroup from "@/components/ToggleCountryGroup";
-import Map from "@/components/Map/Map";
+import MapComponent from "@/components/Map/MapComponent";
 import { Typography } from "@mui/material";
 
 export default function MapView({ densityOrLandmass, setDensityOrLandmass, country, setCountry }) {
@@ -16,8 +17,15 @@ export default function MapView({ densityOrLandmass, setDensityOrLandmass, count
           </div>
         </div>
         <div className="map-container">
-          <Map densityOrLandmass={densityOrLandmass} />
+          <MapComponent densityOrLandmass={densityOrLandmass} />
         </div>
       </div>
   );
 }
+
+MapView.propTypes = {
+  densityOrLandmass: PropTypes.string.isRequired,
+  setDensityOrLandmass: PropTypes.func.isRequired,
+  country: PropTypes.string.isRequired,
+  setCountry: PropTypes.func.isRequired,
+};

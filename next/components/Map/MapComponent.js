@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import PropTypes from "prop-types";
 import { MapContainer, TileLayer } from "react-leaflet";
 import { GeoJSON } from 'react-leaflet/GeoJSON'
 import "leaflet/dist/leaflet.css";
@@ -9,7 +10,7 @@ import stateGeoJsonData from "@/components/Data/stateGeoJsonData"
 import { landmassStyle, densityStyle, highlightFeature } from './MapStyleUtils.js'
 import provinceGeoJsonData from "../Data/canada.js";
 
-export default function Map({ densityOrLandmass }) {
+export default function MapComponent({ densityOrLandmass }) {
   const densityRef = useRef();
   const landmassRef = useRef();
   const canadaDensityRef = useRef();
@@ -40,3 +41,7 @@ export default function Map({ densityOrLandmass }) {
     </MapContainer>
   );
 }
+
+MapComponent.propTypes = {
+  densityOrLandmass: PropTypes.string.isRequired,
+};

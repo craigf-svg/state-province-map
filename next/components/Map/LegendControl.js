@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import PropTypes from "prop-types";
 import { getDensityColor, getLandmassColor, getLegendTextColor } from "@/components/Map/MapStyleUtils";
 
 const densityGrades = [0, 10, 20, 50, 100, 200, 500, 1000];
@@ -28,3 +29,7 @@ export default function LegendControl({ densityOrLandmass }) {
     </div>
   );
 }
+
+LegendControl.propTypes = {
+  densityOrLandmass: PropTypes.string.isRequired,
+};

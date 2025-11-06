@@ -3,6 +3,7 @@
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import PropTypes from 'prop-types';
 import { createAppTheme } from './theme';
 
 const ThemeContext = createContext();
@@ -41,3 +42,7 @@ export default function Providers({ children }) {
     </ThemeContext.Provider>
   );
 }
+
+Providers.propTypes = {
+  children: PropTypes.node.isRequired,
+};

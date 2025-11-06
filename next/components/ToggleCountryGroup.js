@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { SvgIcon, Tooltip } from '@mui/material';
@@ -33,3 +34,8 @@ export default function ToggleCountryGroup(props) {
     </ToggleButtonGroup>
   );
 }
+
+ToggleCountryGroup.propTypes = {
+  country: PropTypes.string.isRequired,
+  setCountry: PropTypes.func.isRequired,
+};

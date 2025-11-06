@@ -1,4 +1,5 @@
 'use client'
+import PropTypes from 'prop-types';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -48,8 +49,8 @@ export default function RegionStatsTable(props) {
                   <TableRow key={region.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                     <TableCell component="th" scope="row">{region.name}</TableCell>
                     <TableCell align="left">{region.abbreviation}</TableCell>
-                    <TableCell align="left">{(region.land_mass && !isNaN(region.land_mass)) ? `${Number(region.land_mass).toLocaleString()}` : "N/A"}</TableCell>
-                    <TableCell align="left">{(region.density && !isNaN(region.density)) ? `${Number(region.density).toLocaleString()}` : "N/A"}</TableCell>
+                    <TableCell align="left">{(region.land_mass && !Number.isNaN(region.land_mass)) ? `${Number(region.land_mass).toLocaleString()}` : "N/A"}</TableCell>
+                    <TableCell align="left">{(region.density && !Number.isNaN(region.density)) ? `${Number(region.density).toLocaleString()}` : "N/A"}</TableCell>
                   </TableRow>
                 ))
               )}
@@ -60,3 +61,15 @@ export default function RegionStatsTable(props) {
     </MathJaxContext>
   );
 }
+
+RegionStatsTable.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      abbreviation: PropTypes.string,
+      land_mass: PropTypes.number,
+      density: PropTypes.number,
+    })
+  ),
+};

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
 import Typography from '@mui/material/Typography';
 
@@ -22,3 +23,8 @@ export default function TableView({ title, data }) {
     </div>
   );
 }
+
+TableView.propTypes = {
+  title: PropTypes.string.isRequired,
+  data: PropTypes.array,
+};

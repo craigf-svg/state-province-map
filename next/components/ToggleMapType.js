@@ -1,5 +1,6 @@
 import GridOnOutlinedIcon from '@mui/icons-material/GridOnOutlined';
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import LandscapeIcon from '@mui/icons-material/Landscape';
@@ -32,3 +33,8 @@ export default function ToggleMapType(props) {
     </ToggleButtonGroup>
   );
 }
+
+ToggleMapType.propTypes = {
+  densityOrLandmass: PropTypes.string.isRequired,
+  setDensityOrLandmass: PropTypes.func.isRequired,
+};

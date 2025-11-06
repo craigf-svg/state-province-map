@@ -33,8 +33,13 @@ export default function Providers({ children }) {
     return createAppTheme(isDark);
   }, [isDark]);
 
+  const contextValue = useMemo(() => ({
+    isDark,
+    toggleTheme
+  }), [isDark, toggleTheme]);
+
   return (
-    <ThemeContext.Provider value={{ isDark, toggleTheme }}>
+    <ThemeContext.Provider value={contextValue}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         {children}

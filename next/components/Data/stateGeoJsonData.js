@@ -1,3 +1,1 @@
-import stateGeoJsonData from './stateGeoJsonData.json';
-
-export default stateGeoJsonData;
+export { default } from './stateGeoJsonData.json';

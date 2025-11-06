@@ -1,3 +1,1 @@
-import provinceGeoJsonData from './provinceGeoJsonData.json';
-
-export default provinceGeoJsonData;
+export { default } from './provinceGeoJsonData.json';

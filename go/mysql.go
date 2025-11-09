@@ -22,11 +22,11 @@ func initMySQL() {
 	}
 
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true&charset=utf8mb4,utf8&loc=Local", user, pass, host, port, dbname)
-	mysqlDB, err := sqlx.Open("mysql", dsn)
-	if err != nil {
-		log.Fatalf("error opening DB: %v", err)
+	mysqlDB, mysqlError := sqlx.Open("mysql", dsn)
+	if mysqlError != nil {
+		log.Fatalf("error opening DB: %v", mysqlError)
 	}
-	if err = mysqlDB.Ping(); err != nil {
-		log.Fatalf("error pinging DB: %v", err)
+	if mysqlError = mysqlDB.Ping(); mysqlError != nil {
+		log.Fatalf("error pinging DB: %v", mysqlError)
 	}
 }

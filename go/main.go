@@ -2,54 +2,45 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
-	"os"
 
-	_ "github.com/go-sql-driver/mysql"
 	"github.com/jmoiron/sqlx"
 	"github.com/joho/godotenv"
 )
 
-var db *sqlx.DB
-
 const headerContentType = "Content-Type"
 
 func main() {
-	err1 := godotenv.Load()
-	if err1 != nil {
+	err := godotenv.Load()
+	if err != nil {
 		log.Println("Could not load .env file.")
 	}
 
-	host := os.Getenv("HOST")
-	user := os.Getenv("USER_NAME")
-	pass := os.Getenv("PASSWORD")
-	dbname := os.Getenv("DB_NAME")
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "3306"
-	}
+	initMySQL()
 
-	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true&charset=utf8mb4,utf8&loc=Local", user, pass, host, port, dbname)
-	var err error
-	db, err = sqlx.Open("mysql", dsn)
-	if err != nil {
-		log.Fatalf("error opening DB: %v", err)
-	}
-	if err = db.Ping(); err != nil {
-		log.Fatalf("error pinging DB: %v", err)
-	}
+	initPostgres()
 
 	http.HandleFunc("/api/getStates", withCORS(func(w http.ResponseWriter, r *http.Request) {
 		query := `SELECT id, name, abbreviation, ROUND(density) AS density, ROUND(land_mass) AS land_mass 
               FROM states ORDER BY land_mass DESC`
-		serveQueryJSONSqlx(w, r, query)
+		serveQueryJSONSqlxDB(w, r, mysqlDB, query)
 	}))
 
 	http.HandleFunc("/api/getProvinces", withCORS(func(w http.ResponseWriter, r *http.Request) {
 		query := `SELECT id, name, abbreviation, ROUND(density) AS density, ROUND(land_mass) AS land_mass FROM provinces ORDER BY land_mass DESC`
-		serveQueryJSONSqlx(w, r, query)
+		serveQueryJSONSqlxDB(w, r, mysqlDB, query)
+	}))
+
+	http.HandleFunc("/api/getStatesPg", withCORS(func(w http.ResponseWriter, r *http.Request) {
+		query := `SELECT id, name, abbreviation, ROUND(density) AS density, ROUND(land_mass) AS land_mass 
+	             FROM states ORDER BY land_mass DESC`
+		serveQueryJSONSqlxDB(w, r, postgresDB, query)
+	}))
+
+	http.HandleFunc("/api/getProvincesPg", withCORS(func(w http.ResponseWriter, r *http.Request) {
+		query := `SELECT id, name, abbreviation, ROUND(density) AS density, ROUND(land_mass) AS land_mass FROM provinces ORDER BY land_mass DESC`
+		serveQueryJSONSqlxDB(w, r, postgresDB, query)
 	}))
 
 	http.HandleFunc("/healthz", withCORS(func(w http.ResponseWriter, r *http.Request) {
@@ -83,15 +74,10 @@ type State struct {
 	LandMass     float64 `db:"land_mass" json:"land_mass"`
 }
 
-func serveQueryJSONSqlx(w http.ResponseWriter, r *http.Request, query string) {
-	if r.Method != http.MethodGet {
-		w.WriteHeader(http.StatusMethodNotAllowed)
-		return
-	}
-
+func serveQueryJSONSqlxDB(w http.ResponseWriter, r *http.Request, dbConn *sqlx.DB, query string) {
 	var results []State
 
-	if err := sqlx.Select(db, &results, query); err != nil {
+	if err := sqlx.Select(dbConn, &results, query); err != nil {
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		log.Printf("query error: %v", err)
 		return

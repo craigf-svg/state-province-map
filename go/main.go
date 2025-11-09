@@ -24,23 +24,23 @@ func main() {
 	http.HandleFunc("/api/getStates", withCORS(func(w http.ResponseWriter, r *http.Request) {
 		query := `SELECT id, name, abbreviation, ROUND(density) AS density, ROUND(land_mass) AS land_mass 
               FROM states ORDER BY land_mass DESC`
-		serveQueryJSONSqlxDB(w, r, mysqlDB, query)
+		serveQueryJSONSqlxDB(w, mysqlDB, query)
 	}))
 
 	http.HandleFunc("/api/getProvinces", withCORS(func(w http.ResponseWriter, r *http.Request) {
 		query := `SELECT id, name, abbreviation, ROUND(density) AS density, ROUND(land_mass) AS land_mass FROM provinces ORDER BY land_mass DESC`
-		serveQueryJSONSqlxDB(w, r, mysqlDB, query)
+		serveQueryJSONSqlxDB(w, mysqlDB, query)
 	}))
 
 	http.HandleFunc("/api/getStatesPg", withCORS(func(w http.ResponseWriter, r *http.Request) {
 		query := `SELECT id, name, abbreviation, ROUND(density) AS density, ROUND(land_mass) AS land_mass 
 	             FROM states ORDER BY land_mass DESC`
-		serveQueryJSONSqlxDB(w, r, postgresDB, query)
+		serveQueryJSONSqlxDB(w, postgresDB, query)
 	}))
 
 	http.HandleFunc("/api/getProvincesPg", withCORS(func(w http.ResponseWriter, r *http.Request) {
 		query := `SELECT id, name, abbreviation, ROUND(density) AS density, ROUND(land_mass) AS land_mass FROM provinces ORDER BY land_mass DESC`
-		serveQueryJSONSqlxDB(w, r, postgresDB, query)
+		serveQueryJSONSqlxDB(w, postgresDB, query)
 	}))
 
 	http.HandleFunc("/healthz", withCORS(func(w http.ResponseWriter, r *http.Request) {
@@ -74,7 +74,7 @@ type State struct {
 	LandMass     float64 `db:"land_mass" json:"land_mass"`
 }
 
-func serveQueryJSONSqlxDB(w http.ResponseWriter, r *http.Request, dbConn *sqlx.DB, query string) {
+func serveQueryJSONSqlxDB(w http.ResponseWriter, dbConn *sqlx.DB, query string) {
 	var results []State
 
 	if err := sqlx.Select(dbConn, &results, query); err != nil {

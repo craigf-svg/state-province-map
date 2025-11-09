@@ -24,11 +24,11 @@ func initPostgres() {
 	pgDSN := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
 		pgHost, pgPort, pgUser, pgPass, pgDBName)
 
-	postgresDB, err := sqlx.Open("postgres", pgDSN)
-	if err != nil {
-		log.Fatalf("error opening PostgreSQL DB: %v", err)
+	postgresDB, pgError := sqlx.Open("postgres", pgDSN)
+	if pgError != nil {
+		log.Fatalf("error opening PostgreSQL DB: %v", pgError)
 	}
-	if err = postgresDB.Ping(); err != nil {
-		log.Fatalf("error pinging PostgreSQL DB: %v", err)
+	if pgError = postgresDB.Ping(); pgError != nil {
+		log.Fatalf("error pinging PostgreSQL DB: %v", pgError)
 	}
 }
